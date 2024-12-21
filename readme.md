@@ -1,4 +1,6 @@
-Below is the list of movement related issues
+Below is the list of movement related issues related to CS2 which did not exist in CS:GO (except one).
+
+This list will not cover *all* movement issues/bugs, and does not include multiplayer movement interactions.
 
 # Issues unrelated to subtick/tickrate
 
