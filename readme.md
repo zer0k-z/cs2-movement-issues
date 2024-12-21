@@ -2,6 +2,29 @@ Below is the list of movement related issues related to CS2 which did not exist 
 
 This list will not cover *all* movement issues/bugs, and does not include multiplayer movement interactions.
 
+Table of Contents:
+- [Issues unrelated to subtick/tickrate](#issues-unrelated-to-subticktickrate)
+	- [Rampbugs](#rampbugs)
+		- [Hull rampbugs](#hull-rampbugs)
+		- [Mesh rampbugs](#mesh-rampbugs)
+	- [Ladder grabbing behavior is different](#ladder-grabbing-behavior-is-different)
+	- [Standing on water floor prevents player from jumping](#standing-on-water-floor-prevents-player-from-jumping)
+	- [Waterstrafe is no longer possible](#waterstrafe-is-no-longer-possible)
+	- [exec\_async exploit](#exec_async-exploit)
+	- [yaw/pitch exploit](#yawpitch-exploit)
+	- [Inability to be closer than 0.03125u towards any surface](#inability-to-be-closer-than-003125u-towards-any-surface)
+	- [Deadstrafing (warning: not a CS:GO difference)](#deadstrafing-warning-not-a-csgo-difference)
+- [Issues related to subtick or tickrate](#issues-related-to-subtick-or-tickrate)
+	- [Airstrafe](#airstrafe)
+	- [Bunnyhopping](#bunnyhopping)
+		- [The jump cooldown](#the-jump-cooldown)
+		- [The perf window](#the-perf-window)
+	- [Ledgegrabs](#ledgegrabs)
+	- [Crouchbug/Jumpbugs](#crouchbugjumpbugs)
+	- [Jump height randomness](#jump-height-randomness)
+	- [Subtick slideup](#subtick-slideup)
+	- [Input automation](#input-automation)
+
 # Issues unrelated to subtick/tickrate
 
 ## Rampbugs
@@ -13,6 +36,7 @@ There are actually two types of rampbugs in CS2: one is mesh related and the oth
 Hull rampbug is the older of the two, existing since the beginning of CS2 Limited Test. When an object is compiled using hull physics rather than the default mesh physics, the generated hulls might be invalid and will not be connected to each other, in some cases a hull could be one unit thicker.
 
 ![](rampbug.png)
+(output of a custom raytracer showing normals of surfaces: https://codeberg.org/GameChaos/cs2raytrace/)
 
 ![](rampbug2.png)
 (problematic hull in red)
@@ -23,13 +47,13 @@ Mesh rampbugs were introduced in 2023-06-20 update. Unlike hull rampbugs, mesh r
 ## Ladder grabbing behavior is different
 Whether the player can grab a ladder in CS:GO depends on the player's view angles. In CS2, it does not seem to be the case anymore.
 
-In CSGO, if the player looks straight down and walk forward towards a ladder, they will not grab it. Pressing S will then move the player backwards. In CS2, pressing S will result in the player moving up the ladder instead.
+In CSGO, if the player looks straight down and walk forward towards a ladder, they will not grab it. Pressing S will then move the player backwards. In CS2, pressing S will result in the player moving up the ladder instead. This can be easily tested on any of de_nuke's ladder.
 
 ## Standing on water floor prevents player from jumping
 If enough portion of the player is underwater and the player is standing on a floor, the player will not be able to jump, unlike CS:GO.
 
 ## Waterstrafe is no longer possible
-Holding space while doing airstrafing movement when the player is on water will let the player accelerate to more than 200u/s as they cycle between air movement and water movement. This is not possible in CS2, as the player do not pop up in the air at all. See [this video](https://youtu.be/j4eTynAWGjw?si=PzAcInhTVne9gmo1&t=55) for example of waterstrafing.
+Holding space while doing airstrafing movement when the player is on water will let the player accelerate to more than 200u/s (normal water speed) as they cycle between air movement and water movement. This is not possible in CS2, as the player do not pop up in the air at all. See [this video](https://youtu.be/j4eTynAWGjw?si=PzAcInhTVne9gmo1&t=55) for example of waterstrafing.
 
 ## exec_async exploit
 `exec_async` executed before the player ever join any server will let players create async console calls whenever they want to and they will be queued across sessions despite `sv_cheats` being 0 on those sessions. This can be use to create desubticked inputs, as these commands are not bound to keys, and also "legit" movement recording scripts.
@@ -109,12 +133,12 @@ More simulations means the ground speed check happens more often, resulting in h
 ## Ledgegrabs
 Ledgegrab is when the player lands on the ground immediately despite the player still going up vertically. This happens when the player is less than 2u above any ground while having less than 140u/s vertical velocity.
 
-The game being on 64 tick make this less likely to happen, however scrolling to generate multiple movement simulations will guarantee its success (if the player has enough fps). This is somewhat awkward and also makes "free wheel" mice pay2win as well, as they can much more generate subtick inputs when needed. See demonstration [here](https://youtu.be/tWNE78RYNj4?si=AgqUihtsvmH22m-h)
+The game being on 64 tick make this less likely to happen, however scrolling to generate multiple movement simulations will guarantee its success (if the player has enough fps). This is somewhat awkward and also makes "free wheel" mice pay2win as well, as they can much more generate subtick inputs when needed. See demonstration [here](https://youtu.be/tWNE78RYNj4?si=AgqUihtsvmH22m-h).
 
 ## Crouchbug/Jumpbugs
 Crouchbugs are frame perfect unduck input (tick perfect in CS:GO) where the player land via unduck and take no fall damage or stamina loss as a result. This can only be performed when the player is 9 to 11 units above the ground. This is not always possible in CS:GO since it is possible that the player is never at the right vertical coordinates (more possible with higher tickrate), but it is always possible in CS2 (the higher the fps, the more possible it is), though inconsistently so.
 
-Jumpbugs are crouchbugs but the player also send a jump input on the exact same frame (tick in CS:GO) as well.
+Jumpbugs are crouchbugs but the player also has to perform a perfect bunny hop (send a jump input on the exact same frame) as well.
 
 Since these have to be client frame perfect in CS2 which requires much more precision than tick perfect, they are incredibly more unreliable than CSGO.
 
@@ -134,4 +158,5 @@ The introduction of subtick has made a lot more of input automation scripts more
 - Jumpbug, automatically press jump as crouch is released.
 - W release, automatically releases W as jump is pressed.
 - Instant strafe, automatically presses A/D as soon as jump is pressed.
+
 These are all client frame perfect. This is not an issue in CS:GO, as `alias` these inputs were possible and allowed. In CS2, due to the block on multi-input binds, these are only accessible to people having certain keyboards, giving them unfair advantage.
