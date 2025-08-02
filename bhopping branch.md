@@ -85,17 +85,19 @@ To get around this, players could desubtick and set their maximum framerate to 3
 
 The new update now subtract `m_flJumpPressedTime` by `frametime` (which is always greater than 0), ensuring that `m_flJumpPressedTime + 0.015625` will *always* be smaller than `curtime`, making `gpGlobals->curtime > nextPossibleJumpTime` always pass, allowing them to be able to jump on every tick. As long as the player do not have other subtick inputs[^2], they will hit 100% perfect bhops.
 
+Using scripts that desubticks or automatically executes inputs (see bhopping_scripts folder), you can create autobhops scripts that enables perfect autobhop.
+
 # Conclusion (TL;DR)
 
 #### Pros
 - Jump cooldown is effectively lowered.
 
 #### Cons
-- More exploits using desubtick and low fps.
+- More exploits using desubtick/exec_async and low fps.
 
 #### Things that haven't changed
 - Perfect bhops are still RNG (more RNG than ever, in fact, because of `sv_subtick_movement_view_angles`...?)
 
 [^1]: This is actually not fully accurate, see [2]
 
-[^2]: Any other input might cause you to land on the ground before you get the chance to hit the perfect bhop, see the section related to perf window in the original README. `sv_subtick_movement_view_angles true` also causes the game to generate extra inputs (to be investigated further). The higher the fps, the more subtick inputs generated, the higher chance the player gets their speed clamped on the ground, the more likely you will fail a perfect bhop with desubtick inputs. Alternatively, player can completely stop turning before landing, preventing from subtick view angles inputs from being generated.
+[^2]: Any other input might cause you to land on the ground before you get the chance to hit the perfect bhop, see the section related to perf window in the original README. `sv_subtick_movement_view_angles true` also causes the game to generate extra inputs if the client predicts that the player will be on the ground. The higher the fps, the more subtick inputs generated, the higher chance the player gets their speed clamped on the ground, the more likely you will fail a perfect bhop with desubtick inputs. Alternatively, player can completely stop turning before landing, preventing from subtick view angles inputs from being generated.
