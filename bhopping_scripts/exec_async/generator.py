@@ -14,5 +14,5 @@ with open("setup.cfg", "w") as f:
 	for i in range (0, COUNT):
 		f.write(f"exec_async exec_async/bhloop{i};\n")
 		f.write("sleep 1\n")
-	f.write("log_flags InputService -donotecho\n")
+	# f.write("log_flags InputService -donotecho\n")
 	f.write("echo Setup done!\n")
