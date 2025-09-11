@@ -55,7 +55,7 @@ If enough portion of the player is underwater and the player is standing on a fl
 ## Waterstrafe is no longer possible
 Holding space while doing airstrafing movement when the player is on water will let the player accelerate to more than 200u/s (normal water speed) as they cycle between air movement and water movement. This is not possible in CS2, as the player do not pop up in the air at all. See [this video](https://youtu.be/j4eTynAWGjw?si=PzAcInhTVne9gmo1&t=55) for example of waterstrafing.
 
-## exec_async exploit
+## exec_async exploit (fixed 2025-09-10)
 `exec_async` executed before the player ever join any server will let players create async console calls whenever they want to and they will be queued across sessions despite `sv_cheats` being 0 on those sessions. This can be use to create desubticked inputs, as these commands are not bound to keys, and also "legit" movement recording scripts. See "ak47" directory for automated AK47 recoil mouse movement and "bhopping_scripts/exec_async" for perfect autobhop.
 
 ## yaw/pitch exploit
@@ -160,3 +160,4 @@ The introduction of subtick has made a lot more of input automation scripts more
 - Instant strafe, automatically presses A/D as soon as jump is pressed.
 
 These are all client frame perfect. This is not an issue in CS:GO, as `alias` these inputs were possible and allowed. In CS2, due to the block on multi-input binds, these are only accessible to people having certain keyboards, giving them unfair advantage.
+
