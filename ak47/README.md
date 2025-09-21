@@ -1,3 +1,4 @@
+# Warning: Now obsolete as exec_async is patched to stop working when sv_cheats is 0.
 
 ### Usage:
 1. Put `ak47.cfg` and `loop.cfg` inside `cfg` folder
