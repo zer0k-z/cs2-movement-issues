@@ -167,6 +167,6 @@ These are all client frame perfect. This is not an issue in CS:GO, as `alias` th
 
 Effective speed gain from sliding up is reduced. A steeper ramp could probably turn possible surfs to straight up impossible.
 
-Surfing down seems mostly unaffected, suggesting that this is most likely related to [deadstrafes](#deadstrafing-warning-not-a-csgo-difference).
+~~Surfing down seems mostly unaffected, suggesting that this is most likely related to [deadstrafes](#deadstrafing-warning-not-a-csgo-difference).~~
 
 
