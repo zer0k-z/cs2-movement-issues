@@ -10,7 +10,7 @@ Table of Contents:
 	- [Ladder grabbing behavior is different](#ladder-grabbing-behavior-is-different)
 	- [Standing on water floor prevents player from jumping](#standing-on-water-floor-prevents-player-from-jumping)
 	- [Waterstrafe is no longer possible](#waterstrafe-is-no-longer-possible)
-	- [exec\_async exploit](#exec_async-exploit)
+	- [exec\_async exploit (fixed 2025-09-10)](#exec_async-exploit-fixed-2025-09-10)
 	- [yaw/pitch exploit](#yawpitch-exploit)
 	- [Inability to be closer than 0.03125u towards any surface](#inability-to-be-closer-than-003125u-towards-any-surface)
 	- [Deadstrafing (warning: not a CS:GO difference)](#deadstrafing-warning-not-a-csgo-difference)
@@ -24,6 +24,7 @@ Table of Contents:
 	- [Jump height randomness](#jump-height-randomness)
 	- [Subtick slideup](#subtick-slideup)
 	- [Input automation](#input-automation)
+	- [Slideup nerfs (2025-09-17 update)](#slideup-nerfs-2025-09-17-update)
 
 # Issues unrelated to subtick/tickrate
 
@@ -160,4 +161,12 @@ The introduction of subtick has made a lot more of input automation scripts more
 - Instant strafe, automatically presses A/D as soon as jump is pressed.
 
 These are all client frame perfect. This is not an issue in CS:GO, as `alias` these inputs were possible and allowed. In CS2, due to the block on multi-input binds, these are only accessible to people having certain keyboards, giving them unfair advantage.
+
+## Slideup nerfs (2025-09-17 update)
+2025-09-17 update "improved timestep-independence of subtick movement acceleration", which changed how acceleration is applied to movement. This change has indirectly nerfed surfing up slopes and ledges, as seen [here](https://youtu.be/uYUqn6psSw0).
+
+Effective speed gain from sliding up is reduced. A steeper ramp could probably turn possible surfs to straight up impossible.
+
+Surfing down seems mostly unaffected, suggesting that this is most likely related to [deadstrafes](#deadstrafing-warning-not-a-csgo-difference).
+
 
