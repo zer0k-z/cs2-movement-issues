@@ -60,7 +60,7 @@ Holding space while doing airstrafing movement when the player is on water will 
 `exec_async` executed before the player ever join any server will let players create async console calls whenever they want to and they will be queued across sessions despite `sv_cheats` being 0 on those sessions. This can be use to create desubticked inputs, as these commands are not bound to keys, and also "legit" movement recording scripts. See "ak47" directory for automated AK47 recoil mouse movement and "bhopping_scripts/exec_async" for perfect autobhop.
 
 ## yaw/pitch exploit
-With a low enough polling rate, binding mouse_x/mouse_y can be used to run chains of aliases. This can be made into movement recording scripts as well.
+With a low enough polling rate, binding mouse_x/mouse_y can be used to run chains of aliases. This can be made into movement recording scripts as well. See bhopping_scripts/mouse_x for an example of perfect autobhop script using mouse movement.
 
 ## Inability to be closer than 0.03125u towards any surface
 Note: This is a very niche movement technique and has no use in competitive play.
