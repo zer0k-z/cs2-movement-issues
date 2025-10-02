@@ -105,7 +105,7 @@ However, there are a few problems with this logic, and there are issues in the i
 
 Regarding the implementation, there are two key issues:
 
-- With `sv_jump_spam_penalty_time` just ever so slightly smaller than 1/64th of a second, you can achieve 100% perf rate with desubticked jumps. The reason for that is that by having the `sv_jump_spam_penalty_time` under the tick interval, the player can use the desubtick jump to align their jump to the tick, ensuring that they are never too close to each other.
+- With `sv_jump_spam_penalty_time` just ever so slightly smaller than 1/64th of a second, you can achieve 100% perf rate with desubticked jumps. The reason for that is that by having the `sv_jump_spam_penalty_time` under the tick interval, the player can use the desubtick jump (if one exists) to align their jump to the tick, ensuring that they are never too close to each other.
 
 - There is also another bug (or feature) with subtick scroll inputs, which completely nullifies most of the functionality of the convar.
 
@@ -168,5 +168,6 @@ These are all client frame perfect. This is not an issue in CS:GO, as `alias` th
 Effective speed gain from sliding up is reduced. A steeper ramp could probably turn possible surfs to straight up impossible.
 
 ~~Surfing down seems mostly unaffected, suggesting that this is most likely related to [deadstrafes](#deadstrafing-warning-not-a-csgo-difference).~~
+
 
 
