@@ -146,10 +146,12 @@ Since these have to be client frame perfect in CS2 which requires much more prec
 ## Jump height randomness
 Jump height deviates more and more over time, making 66 units block jumps very unreliable (see de_ancient A site box). On community servers where maps can stay the same for hours/days, this issue is particularly noticeable.
 
-## Subtick slideup
+## Subtick slideup (
 The player can surf up any surface faster if they bind jump to mouse wheel then spam the wheel as they slide up the surface. 
 
 This is because it generates more subtick inputs, and the sum of distances moved by these subtick inputs are more than if they just hold W and do nothing. This means player with free wheel mouse will get an unfair advantage.
+
+Update: the 2025-11-05 update improved upon this issue and reduced the impact of this technique.
 
 ## Input automation
 Snaptap/nulling/SOCD detection on A and D keys is the only input automation detection method around, but it can be easily bypassed by having an automation script that intentionally or unintentionally does not work some of the time.
@@ -162,12 +164,13 @@ The introduction of subtick has made a lot more of input automation scripts more
 
 These are all client frame perfect. This is not an issue in CS:GO, as `alias` these inputs were possible and allowed. In CS2, due to the block on multi-input binds, these are only accessible to people having certain keyboards, giving them unfair advantage.
 
-## Slideup nerfs (2025-09-17 update)
+## Slideup nerfs (2025-09-17 update) (fixed-ish 2025-11-05)
 2025-09-17 update "improved timestep-independence of subtick movement acceleration", which changed how acceleration is applied to movement. This change has indirectly nerfed surfing up slopes and ledges, as seen [here](https://youtu.be/uYUqn6psSw0).
 
 Effective speed gain from sliding up is reduced. A steeper ramp could probably turn possible surfs to straight up impossible.
 
 ~~Surfing down seems mostly unaffected, suggesting that this is most likely related to [deadstrafes](#deadstrafing-warning-not-a-csgo-difference).~~
+
 
 
 
